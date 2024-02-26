@@ -1,0 +1,66 @@
+{
+  "status": "ok",
+  "totalResults": 6,
+  "articles": [
+    {
+      "source": { "id": "wired", "name": "Wired" },
+      "author": "Wired",
+      "title": "It’s Apparently Easy to Crack the Apple Vision Pro's Front Screen",
+      "description": "Plus: Apple launches a Sports app for the iPhone, Sony is testing its PlayStation VR headset on PC games, and Hamilton has a fancy new watch to celebrate the arrival of Dune: Part Two.",
+      "url": "https://www.wired.com/story/apple-vision-pro-crack-in-front-screen/",
+      "urlToImage": "https://media.wired.com/photos/65d93d967507e5f7e3e9be3b/191:100/w_1280,c_limit/Apple-Vision-Pro-Cracked-Screen-02-Gear.jpg",
+      "publishedAt": "2024-02-24T14:30:00Z",
+      "content": "Apples mixed-reality headset is selling well, but its embroiled in a new mystery thats proving tough to crack.\r\nAs first reported by MacRumors, some customers have discovered a mysterious crack appea… [+4569 chars]"
+    },
+    {
+      "source": { "id": "reuters", "name": "Reuters" },
+      "author": null,
+      "title": "Sports News | Breaking & Latest Sports News | Reuters",
+      "description": "Find latest sports news from every corner of the globe at Reuters.com, your online source for breaking international news coverage.",
+      "url": "https://www.reuters.com/sports/",
+      "urlToImage": "https://www.reuters.com/pf/resources/images/reuters/reuters-default.webp?d=176",
+      "publishedAt": "2024-02-23T11:37:20.2002854Z",
+      "content": null
+    },
+    {
+      "source": { "id": "talksport", "name": "TalkSport" },
+      "author": "Josh Fordham",
+      "title": "Manchester United release statement after journalists ‘banned’ from press conference...",
+      "description": "Manchester United explained why four journalists were banned from an Erik ten Hag press conference on Tuesday. Sky Sports chief reporter Kaveh Solhekhol, the Manchester Evening News’ Samuel L…",
+      "url": "https://talksport.com/football/1666142/man-utd-journalists-banned-press-conference-erik-ten-hag/",
+      "urlToImage": "https://talksport.com/wp-content/uploads/sites/5/2023/10/228f511f-c84a-48e8-b067-5c7277d90984.jpg?strip=all&quality=100&w=1920&h=1080&crop=1",
+      "publishedAt": "2023-12-05T12:12:06Z",
+      "content": "Manchester United explained why four journalists were banned from an Erik ten Hag press conference on Tuesday.\r\nSky Sports chief reporter Kaveh Solhekhol, the Manchester Evening News' Samuel Luckhurs… [+820 chars]"
+    },
+    {
+      "source": { "id": "bleacher-report", "name": "Bleacher Report" },
+      "author": null,
+      "title": "New Micah Parsons Show ",
+      "description": "Fan easier, fan faster and fan better with Bleacher Report. Keep up with the latest storylines, expert analysis, highlights and scores for all your favorite sports.",
+      "url": "https://bleacherreport.com/videos/490566-the-edge-w-micah-parsons-ep-11-vod",
+      "urlToImage": null,
+      "publishedAt": "2023-11-27T20:37:24.6381564Z",
+      "content": null
+    },
+    {
+      "source": { "id": "bleacher-report", "name": "Bleacher Report" },
+      "author": null,
+      "title": " Mikal Bridges Interview ",
+      "description": "Fan easier, fan faster and fan better with Bleacher Report. Keep up with the latest storylines, expert analysis, highlights and scores for all your favorite sports.",
+      "url": "https://bleacherreport.com/videos/491103-taylor-rooks-x-mikal-bridges-vod",
+      "urlToImage": null,
+      "publishedAt": "2023-11-27T20:37:24.3882176Z",
+      "content": "Nets star sits down with Taylor Rooks for exclusive convo."
+    },
+    {
+      "source": { "id": "reuters", "name": "Reuters" },
+      "author": "Reuters Graphics",
+      "title": "Reuters Graphics - Charts, Maps, Interactive Graphics and Videos",
+      "description": "The latest world news - politics, sports, culture, science and environment - from our graphics journalists in Singapore, Bangalore, London and New York.",
+      "url": "https://www.reuters.com/graphics/",
+      "urlToImage": "https://www.reuters.com/graphics/cdn/img/home.jpg",
+      "publishedAt": "2020-12-21T00:00:00Z",
+      "content": null
+    }
+  ]
+}
