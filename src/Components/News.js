@@ -1,50 +1,63 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import NewsItem from "./NewsItem";
+import Spinner from "./Spinner";
+import InfiniteScroll from "react-infinite-scroll-component";
 
-export class News extends Component {
-  pages = 0;
-  constructor() {
-    super();
-    this.state = {
-      articles: [],
-      loading: false,
-      page: 1,
-    };
-  }
+const News = (props) => {
+  const [articles, setArticles] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
+  const [totalResults, setTotalResults] = useState(0);
 
-  async componentDidMount() {
-    let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=f77cff6e35f74a59856457c6691924c7&page=1&pageSize=20`;
-    let data = await fetch(url);
-    data = await data.json();
-    this.pages = Math.ceil(data.totalResults / 20);
-    this.setState({ articles: data.articles });
-  }
-
-  handleNext = async () => {
-    let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=f77cff6e35f74a59856457c6691924c7&page=${
-      this.state.page + 1
-    }&pageSize=20`;
-    let data = await fetch(url);
-    data = await data.json();
-    this.setState({ page: this.state.page + 1, articles: data.articles });
+  const capitalize = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
-  handlePrevious = async () => {
-    let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=f77cff6e35f74a59856457c6691924c7&page=${
-      this.state.page - 1
-    }&pageSize=20`;
+  const updateNews = async () => {
+    props.setProgress(10);
+    let url = `https://newsapi.org/v2/top-headlines?country=in&category=${props.category}&apiKey=${props.api}&page=${page}&pageSize=${props.pageSize}`;
+    setLoading(true);
+    props.setProgress(30);
     let data = await fetch(url);
     data = await data.json();
-    this.setState({ page: this.state.page - 1, articles: data.articles });
+    props.setProgress(70);
+    setArticles(data.articles);
+    setLoading(false);
+    setTotalResults(data.totalResults);
+    props.setProgress(100);
   };
 
-  render() {
-    return (
-      <>
-        <div className=" container my-2">
-          <h1>NewsMonger - Top Headlines</h1>
+  useEffect(() => {
+    document.title = `NewsMonger - ${capitalize(props.category)}`;
+    updateNews();
+    //  eslint-disable-next-line
+  }, []);
+
+  const fetchMoreData = async () => {
+    let url = `https://newsapi.org/v2/top-headlines?country=in&category=${
+      props.category
+    }&apiKey=${props.api}&page=${page + 1}&pageSize=${props.pageSize}`;
+    setPage(page + 1);
+    let data = await fetch(url);
+    data = await data.json();
+    setArticles(articles.concat(data.articles));
+  };
+
+  return (
+    <>
+      <div className="container my-2">
+        <h1 className="text-center" style={{ marginTop: "90px" }}>
+          NewsMonger - {capitalize(props.category)}
+        </h1>
+        {loading && <Spinner />}
+        <InfiniteScroll
+          dataLength={articles.length}
+          next={fetchMoreData}
+          hasMore={articles.length < totalResults}
+          loader={<Spinner />}
+        >
           <div className="row">
-            {this.state.articles.map((element) => {
+            {articles.map((element) => {
               return (
                 <div className="col-md-4" key={element.url}>
                   <NewsItem
@@ -60,31 +73,20 @@ export class News extends Component {
                         : "https://fdn.gsmarena.com/imgroot/news/24/02/xiaomi-14-series-globla-launch-confirmed/-952x498w6/gsmarena_000.jpg"
                     }
                     url={element.url ? element.url : ""}
+                    publishedAt={element.publishedAt ? element.publishedAt : ""}
+                    author={element.author ? element.author : "Unknown"}
+                    source={
+                      element.source.name ? element.source.name : "Unknown"
+                    }
                   />
                 </div>
               );
             })}
           </div>
-          <div className="container d-flex justify-content-between">
-            <button
-              disabled={this.state.page <= 1}
-              className="btn btn-lg btn-dark"
-              onClick={this.handlePrevious}
-            >
-              &larr; Previous
-            </button>
-            <button
-              disabled={this.state.page >= this.pages}
-              className="btn btn-lg btn-dark"
-              onClick={this.handleNext}
-            >
-              Next &rarr;
-            </button>
-          </div>
-        </div>
-      </>
-    );
-  }
-}
+        </InfiniteScroll>
+      </div>
+    </>
+  );
+};
 
 export default News;
